@@ -25,24 +25,26 @@
       </label>
 
       <label> Valor
-        <input type="number" placeholder="R$ 10.000,00">
+        <input class="input-currency" type="number" placeholder="R$ 10.000,00">
       </label>
 
-      <button>Converter</button>
+      <button onclick="cliquei()">Converter</button>
 
       <section>
         <div>
             <img src="" alt="logo-moeda-a-converter">
             <p>Real</p>
-            <p>R$ 0,00</p>
+            <p class="value-to-converter">R$ 0,00</p>
         </div>
             <img src="" alt="seta">
         <div>
             <img src="" alt="logo-moeda-convertida">
             <p>Dólar</p>
-            <p>US$ 0,00</p>
+            <p class="value-to-converted">US$ 0,00</p>
         </div>
       </section>
     </main>
+
+    <script src="script.js"></script>
   </body>
 </html>
