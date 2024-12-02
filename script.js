@@ -1,20 +1,66 @@
 const button = document.querySelector("button")
+const currencySelect = document.querySelector(".currency-select")
 
-function cliquei(){
+
+function cliquei() {
     const inputCurrenyValue = document.querySelector(".input-currency").value
 
-    const dolarToday = 6.01
+    const currencyValueToConvert = document.querySelector(".currency-value-to-converter")
 
-    const convertedValue = inputCurrenyValue / dolarToday
+    const currencyValueToConverted = document.querySelector(".currency-value")
 
-    console.log(convertedValue)
+    const dolarToday = 5.97
+    const euroToday = 6.32
 
-    const currencyValueToConvert =document.querySelector(".value-to-converter")
+    if (currencySelect.value == "dolar") {
+        currencyValueToConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(inputCurrenyValue / dolarToday)
+    }
+    if (currencySelect.value == "euro") {
+        currencyValueToConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR"
+        }).format(inputCurrenyValue / euroToday)
+    }
 
-    const currencyValueToConverted = document.querySelector(".value-to-converted")
-
-    currencyValueToConvert.innerHTML = inputCurrenyValue
-
-    currencyValueToConverted.innerHTML = convertedValue.toFixed(2)
-    
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    }).format(inputCurrenyValue)
 }
+
+function changeCurrency(){ // toda vez que meu select trocar de valor, ele vai executar essa função
+    const currencyName = document.getElementById("currency-name")
+    const currencyImage = document.querySelector('.currency-img')
+
+    if(currencySelect.value == 'dolar'){
+        currencyName.innerHTML = 'Dólar americano'
+        currencyImage.src = './assets/estados-unidos.png'
+    }
+    if(currencySelect.value == 'euro'){
+        currencyName.innerHTML = 'Euro'
+        currencyImage.src = './assets/euro.png'
+    }
+
+  
+}
+
+cliquei()
+
+currencySelect.addEventListener('change', changeCurrency)
+
+/*   console.log(convertedValue)
+
+   const currencyValueToConvert =document.querySelector(".value-to-converter")
+
+   const currencyValueToConverted = document.querySelector(".value-to-converted")
+
+   currencyValueToConvert.innerHTML = inputCurrenyValue
+
+   currencyValueToConverted.innerHTML = convertedValue.toFixed(2)
+   
+}
+
+*/
